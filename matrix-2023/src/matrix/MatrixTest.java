@@ -63,4 +63,19 @@ class MatrixTest {
 				m.plus(m).getElementsRowMajor());
 	}
 
+	@Test
+	void testRE1() {
+		double[] e = new double[] { 1 };
+		Matrix m = new Matrix(1,1,e);
+		e[0] = 42;
+		assertEquals(1, m.getElementAt(0,0));
+	}
+	
+	@Test
+	void testRE2() {
+		double[] r = m.getElementsRowMajor();
+		r[0] = 42;
+		assertEquals(1, m.getElementAt(0, 0));
+		
+	}
 }

@@ -61,13 +61,7 @@ public class Matrix {
 	 *       | )
 	 */
 	public double[] getElementsRowMajor()  {
-		double[] r = new double[rowCount*columnCount];
-		for( int i = 0; i < getRowCount(); ++i ) {
-			for( int j = 0; j < getColumnCount(); ++j ) {
-				r[i*getRowCount() + j] = getElementAt(i,j);
-			}
-		}
-		return r;
+		return elementsRowMajor.clone();
 	}
 	/**
 	 * @creates | result
@@ -88,7 +82,7 @@ public class Matrix {
 		return r;
 	}
 	public double getElementAt(int i, int j)  {
-		return elementsRowMajor[i*rowCount+j];
+		return elementsRowMajor[i*columnCount+j];
 	}
 	/**
 	 * @creates | result
@@ -104,7 +98,7 @@ public class Matrix {
 		double[] r = new double[rowCount*columnCount];
 		for( int i = 0; i < getRowCount(); ++i ) {
 			for( int j = 0; j < getColumnCount(); ++j ) {
-				r[i*getRowCount() + j] = getElementAt(i,j)*factor;
+				r[i*getColumnCount() + j] = getElementAt(i,j)*factor;
 			}
 		}
 		return new Matrix(getRowCount(),getColumnCount(),r);
@@ -126,7 +120,7 @@ public class Matrix {
 		double[] r = new double[rowCount*columnCount];
 		for( int i = 0; i < getRowCount(); ++i ) {
 			for( int j = 0; j < getColumnCount(); ++j ) {
-				r[i*getRowCount() + j] = getElementAt(i,j) + other.getElementAt(i, j);
+				r[i*getColumnCount() + j] = getElementAt(i,j) + other.getElementAt(i, j);
 			}
 		}
 		return new Matrix(getRowCount(),getColumnCount(),r);
